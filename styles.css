@@ -26,6 +26,7 @@
 
 body {
     background: var(--bg-url) no-repeat top center/cover;
+    height: 100vh;
 }
 
 body * {
@@ -34,9 +35,10 @@ body * {
 }
 
 .Container {
-    width: 368px;
-    height: 720px;
+    width: 100%;
+    max-width: 588px;
     margin: 56px auto 8px auto;  
+    padding: 0 24px;
 }
 
 #Profile {
@@ -71,11 +73,15 @@ body * {
     z-index: 1;
     left: 0;
     transform: translateY(-50%);
+    animation: slideOut 0.2s forwards;
 }
 
 .light #botao {
-    right: 0;
-    left: initial;
+   animation: slideIn 0.2s forwards;
+}
+
+#botao:hover{
+    outline: 8px solid var(--hl-color);
 }
 
 #barra {
@@ -145,4 +151,31 @@ footer {
     padding: 24px 0;
     text-align: center;
     font-size: 14px;
+}
+
+@media (min-width: 700px) {
+    :root { 
+        --bg-url: url(./assets/bgD.png)
+    }
+    .light {
+        --bg-url: url(./assets/bgW.png)
+    }
+}
+
+@keyframes slideIn {
+    from{
+        left: 0;
+    }
+    to {
+        left: 50%;
+    }
+}
+
+@keyframes slideOut {
+    from{
+        left: 50%;
+    }
+    to {
+        left: 0;
+    }
 }
